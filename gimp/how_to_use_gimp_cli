@@ -1,0 +1,115 @@
+
+How to use the GIMP CLI
+
+
+
+Versions:
+OS: Ubuntu 21.04
+kernel: 5.11.0-22-generic
+GIMP: 2.10.22
+bash: 5.1.4
+GNOME Terminal: 3.38.1
+
+
+
+
+
+Summary:
+1. Open a file
+2. Make a selection (drawable)
+3. Run a command
+4. Save the result
+5. Close GIMP
+
+
+
+
+===  IMPORTANT!  ===
+Become familar with the Script-Fu Console.
+Open the GIMP (GUI) app. In the Menubar go to Filters > Script-Fu > Console > Browse
+This is where you find the names of all the GIMP commands, and their options, and their explanations.
+
+
+
+
+Here is some basic usage for GIMP CLI:
+
+
+1. Open a file
+The trailing backslash is to indicate that this code is mulitple lines.
+
+gimp -i filename.png \
+
+
+
+2. Make a selection
+
+The "-b" argument is used to run multiple GIMP commands in a batch.
+It is followed by the command you want to run. The command is usually followed by some numerical options.
+
+Probably the first batch command we want to run is to make a selection. That way we apply the effect to only a specific portion of the image.
+
+Here we are using rectangular select. There are other selection methods such as ellipse, rounded rectangle, etc.
+
+To understand the number options, look up the command in the Script-Fu Console, as I stated above. I'll explain only this command.
+
+The last 4 numbers are most important in this example. They are: x coordinate of upper-left corner of rectangle, y coordinate of upper-left corner of rectangle, the width of the rectangle, the height of the rectangle. So this example we are starting the rectangular selection at position 20, 15 and it is 800 pixels wide by 700 pixels high.
+
+-b '(gimp-image-select-rectangle 1 0 20 15 800 700)' \
+
+
+
+3. Run a command (we will use a filter called "wind" in this example)
+Apply the wind effect to the selection. Again, you can find the name of other filters in the Script-Fu Console. They start with "plug-in-".
+
+Notice that the third numerical option is "2". This refers to the selection we made in the previous step. GIMP Console uses the term "Drawable" instead of "Selection".
+
+-b '(plug-in-wind 1 1 2 10 2 60 0 0)' \
+
+
+You can apply more batch commands if you wish.
+
+
+
+4. Save the result
+I don't know why the raw filename and double quotes are needed, but they are.
+
+-b '(file-png-save-defaults 1 1 2 "output.png" "raw")' \
+
+
+
+5. Close GIMP
+
+-b '(gimp-quit 0)'
+
+
+
+
+
+All of it together
+
+gimp -i filename.jpg \
+-b '(gimp-image-select-rectangle 1 0 20 15 800 700)' \
+-b '(plug-in-wind 1 1 2 10 2 60 0 0)' \
+-b '(file-png-save-defaults 1 1 2 "output.png" "raw")' \
+-b '(gimp-quit 0)'
+
+
+
+
+
+I get the following error:
+"gimp: GEGL-WARNING: (../gegl/buffer/gegl-tile-handler-cache.c:1076):gegl_tile_cache_destroy: runtime check failed: (g_queue_is_empty (&cache_queue))
+EEEEeEeek! 5 GeglBuffers leaked"
+
+but it still works, so I ignore it.
+
+
+
+
+
+
+
+
+
+
