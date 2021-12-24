@@ -1,31 +1,33 @@
 ## How to auto populate a varying / arbitrary / unknown number of cells in Excel without VBA
 
-to do:
-VBA alternate
-images/gifs
+to do:\
+VBA alternate\
+images/gifs\
+xlsx format?
 
+<br/>
 
-#### Description:
+### Description:
 This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
 
 What we want is to select an industry from a dropdown list and have Excel automatically populate adjacent cells with the appropriate parameters for that industry. 
 
 Our workbook will have 3 sheets. The first (named sample_log) will be where we select the industry from a dropdown list. The second sheet (named iu_param_table) will be where we store the table that contains all the industries and their parameters. The third sheet (named get_param) will be where we put all the logic of our formulas. The sample_log sheet will have cells referencing the get_param sheet, so that whatever result we get on the get_param sheet will also display on the sample_log sheet.
 
+<br/><br/><br/>
+### Tested on:
+Microsoft Excel 2016 and LibreOffice Calc 7.1.4.2.\
+Since Excel uses an exclamation mark to designate a sheet name and LibreOffice Calc uses a period, I supplied two versions.\
+Use the .xlsx format if you're using Excel.
 
-#### Tested on:
-Microsoft Excel 2016 and LibreOffice Calc 7.1.4.2.
-Since Excel uses an exclamation mark to designate a sheet name and LibreOffice Calc uses a period, I supplied two versions. Use the .xlsx format if you're using Excel.
 
-
-
-##### Why not use VBA?
+<br/><br/>
+#### Why not use VBA?
 You can and should, if you want to use this technique only at specific cells. I will supply an example of this. However, I was not able to figure out a way to have my VBA method apply to all cells in a column while also preserving the format I wanted to use.
 
 
-
-
-
+<br/><br/>
+## Let's get started
 Create the industry and parameter table
 
 To get started we are going to put all of the industries and parameters on a separate sheet, so that it is out of the way. We are going to name this sheet "iu_param_table".
