@@ -13,7 +13,7 @@ Automatically populate cells based on a selection from a dropdown list:
 
 <br/><br/>
 The output can be of various lengths and repeated indefinitely:
-![This is an image](Screenshot (10).png)
+<img src="https://github.com/JoeUgly/How_to/blob/master/Screenshot%20(10).png" width="1000" height="500">
 
 <br/><br/><br/>
 ### Tested on:
