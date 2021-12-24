@@ -8,11 +8,8 @@ xlsx format?
 <br/>
 
 ### Description:
-This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
+Automatically populate cells based on a selection from a dropdown list. This process can be repeated indefinitely.
 
-What we want is to select an industry from a dropdown list and have Excel automatically populate adjacent cells with the appropriate parameters for that industry. 
-
-Our workbook will have 3 sheets. The first (named sample_log) will be where we select the industry from a dropdown list. The second sheet (named iu_param_table) will be where we store the table that contains all the industries and their parameters. The third sheet (named get_param) will be where we put all the logic of our formulas. The sample_log sheet will have cells referencing the get_param sheet, so that whatever result we get on the get_param sheet will also display on the sample_log sheet.
 
 <br/><br/><br/>
 ### Tested on:
@@ -28,14 +25,23 @@ You can and should, if you want to use this technique only at specific cells. I 
 
 <br/><br/>
 ## Let's get started
-Create the industry and parameter table
+
+#### Overview
+This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
+
+What we want is to select an industry from a dropdown list and have Excel automatically populate adjacent cells with the appropriate parameters for that industry. 
+
+Our workbook will have 3 sheets. The first (named sample_log) will be where we select the industry from a dropdown list. The second sheet (named iu_param_table) will be where we store the table that contains all the industries and their parameters. The third sheet (named get_param) will be where we put all the logic of our formulas. The sample_log sheet will have cells referencing the get_param sheet, so that whatever result we get on the get_param sheet will also display on the sample_log sheet.
+
+
+<br/><br/>
+#### Create the industry and parameter table
 
 To get started we are going to put all of the industries and parameters on a separate sheet, so that it is out of the way. We are going to name this sheet "iu_param_table".
 
 
-
-
-Create the industry dropdown list
+<br/><br/>
+#### Create the industry dropdown list
 Now we are going to create a dropdown list using data validation. The list will consist of all of the industry names.
 
 To create a dropdown list click on the Data section (on the ribbon), then Data Validation. Select list and the source. The source is where all the names of the industries are located in the workbook. i.e.: iu_param_table!B2:E2
@@ -45,7 +51,7 @@ Select one of the industries from the list.
 
 
 
-
+<br/><br/>
 Alright, now the fun part. The basic order of events will be:
 1. Get the industry name
 2. Find that industry name in the table and return the column letter
