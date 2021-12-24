@@ -8,8 +8,12 @@ xlsx format?
 <br/>
 
 ### Description:
-Automatically populate cells based on a selection from a dropdown list. This process can be repeated indefinitely.
+Automatically populate cells based on a selection from a dropdown list:
+[GIF]
 
+<br/><br/>
+The output can be of various lengths and repeated indefinitely:
+![This is an image](Screenshot (10).png)
 
 <br/><br/><br/>
 ### Tested on:
