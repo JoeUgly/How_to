@@ -48,7 +48,7 @@ To get started we are going to put all of the industries and parameters on a sep
 #### Create the industry dropdown list
 Now we are going to create a dropdown list using data validation. The list will consist of all of the industry names.
 
-To create a dropdown list click on the Data section (on the ribbon), then Data Validation. Select list and the source. The source is where all the names of the industries are located in the workbook. i.e.: iu_param_table!B2:E2
+To create a dropdown list click on the Data section (on the ribbon), then Data Validation. Select list and the source. The source is where all the names of the industries are located in the workbook. Ex: iu_param_table!B2:E2
 
 Select one of the industries from the list.
 
@@ -71,7 +71,7 @@ Many of these steps can be combined, but I chose to keep them separate in order 
 
 This is an easy one. Get the industry from the sample_log sheet. If the corresponding cell from the sample_log sheet is empty, then leave blank.
 
-=IF(sample_log!B3="", "", sample_log!B3)
+`=IF(sample_log!B3="", "", sample_log!B3)`
 
 
 
@@ -83,7 +83,7 @@ However, the MATCH function returns a number to designate the position in the ta
 
 If the cell from step 1 is blank, then repeat what is in the cell above.
 
-=IF(B3="", C2, CHAR(65+MATCH(B3, iu_param_table!$B$2:$O$2, 0)))
+`=IF(B3="", C2, CHAR(65+MATCH(B3, iu_param_table!$B$2:$O$2, 0)))`
 
 
 
@@ -98,12 +98,12 @@ Column 3, row 5
 
 To do that, we supply the COUNTA function with a range of cells; the appropriate column starting at row 3 (that's where the data begins) until row 16 (where the data ends for the longest column in the table. If your data has more items, then increase this number).
 This is what we are trying to achieve after the data has been evaluated:
-COUNTA(C3:C16)
+`COUNTA(C3:C16)`
 
 We are referencing column C in the above example from cell C3 (step 2) by using the INDIRECT function. Since the table is on another sheet we must also supply that by stating "iu_param_table!"
 
 This is the formula we will actually use:
-=IF(sample_log!B3="", "", COUNTA(INDIRECT("iu_param_table!"&C3 & 3):INDIRECT("iu_param_table!"&C3 & 16)))
+`=IF(sample_log!B3="", "", COUNTA(INDIRECT("iu_param_table!"&C3 & 3):INDIRECT("iu_param_table!"&C3 & 16)))`
 
 
 Now we have the number of parameters for that column.
@@ -116,7 +116,7 @@ Now we have the number of parameters for that column.
 
 This step will be used to loop through all the parameters. We’ll start with the number supplied from the previous column and decrement it until we reach zero (no parameters remaining).
 
-=IF(E7="", "", IF(ISNUMBER(D8), D8, IF(E7-1>0, E7-1, "")))
+`=IF(E7="", "", IF(ISNUMBER(D8), D8, IF(E7-1>0, E7-1, "")))`
 
 
 
@@ -126,7 +126,7 @@ This step will be used to loop through all the parameters. We’ll start with th
 
 We are using the column letter supplied by cell C3 and the row number supplied by E3. We have to add 2 to it because the date in the table starts on row 3. Again, we are using the INDIRECT function to refer to the sheet named iu_param_table.
 
-=IF(ISNUMBER(E3), INDIRECT("iu_param_table!"&C3&E3+2), "")
+`=IF(ISNUMBER(E3), INDIRECT("iu_param_table!"&C3&E3+2), "")`
 
 And finally this should give a parameter for that industry. Use AutoFill to extend these formulas to the cells below. Each row will contain a different parameter for that industry, until no more remain. 
 
@@ -137,7 +137,7 @@ And finally this should give a parameter for that industry. Use AutoFill to exte
 ### Display the results on the sample_log sheet
 Paste this into the cell next to the industry that we selected on the sample_log sheet. Extend the formula into the rows below using the AutoFill feature. If your data on the sample_log sheet doesn't start on row 3 then adjust accordingly. 
 
-=get_param!F3
+`=get_param!F3`
 
 
 
@@ -146,6 +146,9 @@ Optional:
 You may notice that column C of sheet get_param has data extending down for all the rows that contain formulas. Unfortunately, there is no easy way of preventing this (due to circular logic errors) without making this example even more complicated. 
 
 I will supply a full version of the workbook I used for this example. It contains slightly different formulas, which prevent that column letter from repeating forever. 
+
+
+
 
 
 
