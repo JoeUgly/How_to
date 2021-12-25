@@ -37,7 +37,7 @@ You can and should, if you want to use this technique only at one specific locat
 
 The following sections provide a walkthrough for recreating this woorkbook's functionality. However, I strongly suggest using the workbooks I have provided (rather than starting from scratch) and modifying them to suit your needs. These sections should provide the necessary insight.
 
-<br/>
+<br/><br/>
 #### Overview
 This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
 
