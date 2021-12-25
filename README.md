@@ -35,6 +35,9 @@ You can and should, if you want to use this technique only at one specific locat
 <br/><br/>
 ## Detailed description
 
+The following sections provide a walkthrough for recreating this woorkbook's functionality. However, I strongly suggest using the workbooks I have provided (rather than starting from scratch) and modifying them to suit your needs. These sections should provide the necessary insight.
+
+<br/>
 #### Overview
 This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
 
@@ -42,7 +45,6 @@ What we want is to select an industry from a dropdown list and have Excel automa
 
 Our workbook will have 3 sheets. The first (named sample_log) will be where we select the industry from a dropdown list. The second sheet (named iu_param_table) will be where we store the table that contains all the industries and their parameters. The third sheet (named get_param) will be where we put all the logic of our formulas. The sample_log sheet will have cells referencing the get_param sheet, so that whatever result we get on the get_param sheet will also display on the sample_log sheet.
 
-The following sections provide a walkthrough for recreating this woorkbook's fincionality. However, I strongly suggest using the workbooks I have provided (rather than starting from scratch) and modifying them to suit your needs. These sections should provide the necessary insight.
 
 
 <br/><br/>
