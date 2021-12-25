@@ -4,7 +4,9 @@ to do:\
 VBA alternate\
 gif\
 image for each step\
-xlsx format?
+xlsx format?\
+alternate improved version\
+
 
 <br/>
 
@@ -16,6 +18,8 @@ Automatically populate cells based on a selection from a dropdown list:
 The output can be of various lengths and repeated indefinitely:
 <img src="https://github.com/JoeUgly/How_to/blob/master/Screenshot%20(10).png" width="1000" height="500">
 
+
+
 <br/><br/><br/>
 ### Tested on:
 Microsoft Excel 2016 and LibreOffice Calc 7.1.4.2.\
@@ -25,11 +29,11 @@ Use the .xlsx format if you're using Excel.
 
 <br/><br/>
 #### Why not use VBA?
-You can and should, if you want to use this technique only at specific cells. I will supply an example of this. However, I was not able to figure out a way to have my VBA method apply to all cells in a column while also preserving the format I wanted to use.
+You can and should, if you want to use this technique only at one specific location. I will supply an example of this. However, I was not able to figure out a way to have my VBA method apply to all cells in a column while also preserving the format I wanted to use.
 
 
 <br/><br/>
-## Let's get started
+## Detailed description
 
 #### Overview
 This example uses 4 industries. Each industry has a unique list of parameters associated with it. The number of parameters in each list varies (between 3 and 14).
@@ -51,17 +55,14 @@ Now we are going to create a dropdown list using data validation. The list will 
 
 To create a dropdown list click on the Data section (on the ribbon), then Data Validation. Select list and the source. The source is where all the names of the industries are located in the workbook. Ex: iu_param_table!B2:E2
 
-Select one of the industries from the list.
-
-
 
 
 <br/><br/>
-#### Alright, now the fun part. The basic order of events will be:
+#### Alright, now the fun part. The basic order of events for our formulas will be:
 1. Get the industry name
 2. Find that industry name in the table and return the column letter
 3. Count the total number of rows (parameters) for that column
-4. Count down from step 3
+4. Count down (decrement) from step 3
 5. Lookup the parameter using the number from step 4 and the column from step 2. 
 <br/>
 Many of these steps can be combined, but I chose to keep them separate in order to make it simpler to follow along.
